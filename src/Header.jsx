@@ -1,10 +1,14 @@
-import {useState} from "react";
+import {useState,useEffect} from "react";
+import {LOGO_URL} from "./utils/constants";
 export const Header = () => {
   const [loginBtn,setLoginBtn]=useState("login");
+  useEffect(()=>{
+    console.log("UseEffect Called");
+  })
   return (
     <div className="header">
       <div className="logo1">
-        <img src="https://thumbs.dreamstime.com/b/food-delivery-logo-template-vector-icon-illustration-170869600.jpg" />
+        <img src={LOGO_URL} />
       </div>
       <div className="nav-details">
         <ul>

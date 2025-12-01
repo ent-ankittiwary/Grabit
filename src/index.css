@@ -7,8 +7,8 @@
   border:1px solid black;
 }
 .logo1 > img{
-  width:100px;
-  height:100px;
+  width:150px;
+  height:110px;
 }
 .nav-details > ul{
   display:flex;
@@ -33,8 +33,9 @@
   background-color: #f0f0f0;
   margin:5px;
   padding:5px;
-  width:200px;
-  height:500px;
+  width:250px;
+  height:400px;
+  font-size:14px;
   border:1px solid black;
 }
 .res-card:hover{
@@ -59,5 +60,9 @@
   display: flex;
   flex-wrap:wrap;
   justify-content: space-around;
+}
+.img-logo>img{
+  width:250px;
+  height:200px;
 }
 
