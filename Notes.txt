@@ -1,0 +1,112 @@
+ Note : To reset settings
+        ctrl + shift + p and seaech
+        Preferences: Open User Settings (JSON) and clear all the data it contains to reset all the settings
+        
+Note: code to create html tag using js
+    <script>
+        // creating h1 using js
+        let root = document.getElementById("root");
+        let header = document.createElement("h1");
+        header.innerHTML = "Hello World using Js!";
+        root.appendChild(header);
+    </script>
+
+ Note: In Html file
+  1. Order of files matters a lot, we cant put <script src="App.js"></script> above cdn links
+     it will give a  ReferenceError: React is not defined.
+      b/c as soon as it get src= "App.js" it start executing App.js which contain react code,
+      and since cdn links are below this line it will unable to fetch React and ReactDOM through network call. 
+
+ Note: 
+  -React will only work in the place whatever we made the root as(it can work in header only, it can work in footer only , it can work in side bar)
+  
+  -that's why react is a library(it can work independently on the small portion of our app as well).
+
+  Library Vs Framework:
+  -Framework comes with all loads of thing
+  -react library is just a piece js code written by facebook developer that working independently on any portion of our app. 
+  -at the end of the day react is just js.
+
+  all framework requires you to creating that app using that framework
+  but react can work in your existing app as well(using some cdn links).
+  
+  => React.createElement(
+      "tag name",
+      {attributes in key: "value" pair},
+      children/ react.createElement
+      if we have multiple childern we will combine in form of array
+      [child1, child2]
+  );
+  and this React.createElement will return us an object and we apply render method on it create an element.
+   render is very powerful it render the object(returned by React.createElement) and put all those tags in our html code.
+
+    EPISODE - 2
+   // React.createElement => ReactElement - Js Object => HtmlElement(after rendering)
+
+   // JSX => Babel transpile it to React.createElement => ReactElement - Js Object => HtmlElement(after rendering)
+
+   // React Element written in JSX
+    const jsxHeading = (
+        <h1 id="heading" className="head">Namaste React using JSX🚀</h1>
+    );
+
+    //React Element written in React
+    const heading = React.createElement(
+        "h1",
+        { id: "heading" },
+        "Creating a heading using react🚀"
+    );
+
+    // how to render
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(jsxHeading);
+
+React Component:
+
+ 1. Class Based Component
+ 2. Functional Component
+
+ React Functional Component - it's js function that return a piece of JSX or react element
+
+ Note: React Component name should start with capital letter(i.e. PascalCase) (HeadingComponent),
+        if we write it in camelCase it will throw an error:
+        Error: <headingComponent /> is using incorrect casing. Use PascalCase for React components, or lowercase for HTML elements.
+
+
+// Food Ordering App
+
+/**
+ * Header
+ *  - Logo
+ *  - Nav items
+ * Body
+ *  - Search bar
+ *  - Resturant Container
+ *      -Resturant Card
+ * Footer
+ *  - Copyright
+ *  - link
+ *  - Address
+ *  - Contact
+ */
+
+ Notes: 
+ //  const styleCard = {
+//   backgroundColor: '#f0f0f0',
+// };
+
+// * Props :
+
+// * prop -> is Just a JS Object
+
+// * Note: When you have to dainamically pass in a data to a component, you pass in prop
+
+// const RestaurantCard = (props) => {
+// console.log(props);
+
+// * Note We can also destructure props on the fly by wrapping them in between {}, this is like...
+
+// * const { resName, cuisine } = props;
+
+// const RestaurantCard = ({ resName, cuisine }) => {
+//   console.log({ resName, cuisine });
