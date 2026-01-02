@@ -12,7 +12,7 @@ import { MENU_API } from "./utils/constants.js";
 import {lazy,Suspense} from "react";
 const About=lazy(()=>import ("./About.jsx"));
 import UserContext from "./utils/UserContext.js"
-import appStore from "./utils/AppStore.js";
+import appStore from "./utils/appStore.js";
 import {Provider} from "react-redux";
 import Cart from "./Cart";
 
