@@ -141,7 +141,7 @@ const resList = [
     ],
     allCTA: [],
     promoOffer: "",
-    checkBulkOffers: true,
+    checkBulkOffers   : true,
     bulkOffers: [
       {
         text: "₹200 OFF",

@@ -35,6 +35,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import ShimmerMenu from "./ShimmerMenu";
 import { MENU_API } from "./utils/constants";
+import RestaurantCategory from "./RestaurantCategory";
+
 
 const RestaurantMenu = () => {
   const { newMenuUrl } = useParams();
@@ -45,6 +47,8 @@ const RestaurantMenu = () => {
   // ✅ Store full menu JSON here
   const [menuData, setMenuData] = useState(null);
   const [loading, setLoading] = useState(true); // 🔹 added
+  const [showIndex,setShowIndex]=useState(0);
+
 
   useEffect(() => {
     // if (!finalUrl) return;
@@ -71,15 +75,36 @@ const RestaurantMenu = () => {
     return <ShimmerMenu />;
   }
 
+  const {name,rating, cuisine_string, res_status_text, timing }=menuData?.page_data?.sections?.SECTION_BASIC_INFO;
+  console.log(name);
+   const { address} = menuData?.page_data?.sections?.SECTION_RES_CONTACT;
+  const menus  = menuData?.page_data?.order?.menuList.menus
+  console.log(menus);
+
   return (
     <div className="menu">
-      {/* <h1>Restaurant ID: {resId}</h1> */}
-      {/* ✅ Use any JSON field safely */}
-      <h2>{menuData?.page_info?.pageTitle}</h2>
-      {/* <h3>Rating: {menuData?.data?.rating}</h3>
-      <p>City: {menuData?.data?.city}</p> */}
+      <div className="font-bold text-md p-2 m-2">
+      <h2 className="text-blue-900 font-extrabold underline">{name}</h2>
+      <h3>{address}</h3>
+      <h2>⭐{rating.rating_text}</h2>
+      <h2 className="text-yellow-900">{cuisine_string}</h2>
+      <h2 className="text-md text-green-800">{timing.timing_desc}</h2>
+      <h2 className="text-2xl text-red-700">{res_status_text}</h2>
+      </div>
 
-      <h2>Menu</h2>
+      <div>
+          {menus.map((menuItem,index) => (
+            <RestaurantCategory 
+              key={menuItem?.menu?.id}
+              menu={menuItem}
+              showItems={index===showIndex ?true: false}
+              setShowIndex={()=>setShowIndex(index)}
+            />
+          ))}
+          
+        </div>
+
+   
     </div>
   );
 };
